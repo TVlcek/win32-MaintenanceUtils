@@ -10,6 +10,6 @@ class Window
 
 	public:
 		Window(std::string title);
-
+		//WIP
 };
 
