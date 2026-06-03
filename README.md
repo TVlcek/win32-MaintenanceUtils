@@ -3,7 +3,7 @@
 
 ## Features (WIP):
 -(Will) provide a handful of easy-to-use tools that would normally take time and effort to properly automate
-with traditional scripting tools/ways such as Windows PowerShell, CMD, VBS at the touch of a fingertip.  
+with traditional scripting tools/ways such as Windows PowerShell, CMD, VBScript at the touch of a fingertip.  
 -Meant to provide a generally sound and user friendly UI with overview  
 -Extremely lightweight, fast and easy to deploy -> built from scratch using raw Windows API (Win32 API) in C++
 with little to no dependencies and no wrappers/frameworks and managed code that introduces performance overhead
