@@ -1,3 +1,7 @@
+﻿//ENG: Wraps windows API window functions, most of the code relies on creating a window handle (HWND)
+//	   and calling windows API functions on the given window handle
+
+
 #include "CWindow.h"
 #include <Windows.h>
 #include <stdexcept>
