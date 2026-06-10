@@ -20,6 +20,21 @@ CWindow::CWindow(std::wstring* WstrWindowTitle, int SizeX, int SizeY)
 	}
 
 }
+bool CWindow::Show()
+{
+	if (this->WindowHandle == nullptr)
+	{
+		return false;
+	}
+
+	if (!ShowWindow(this->WindowHandle, SW_SHOW))
+	{
+		/*GetLastError();*/
+		return false;
+	}
+
+	return true;
+}
 CWindow::~CWindow()
 {
 	HWND hwnd = this->WindowHandle;
