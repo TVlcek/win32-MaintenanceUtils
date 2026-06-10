@@ -2,14 +2,15 @@
 #include <string.h>
 
 #pragma once
-class Window
+class CWindow
 {
 	private:
-		HANDLE HWND;
+		HWND WindowHandle;
 		MSG msg;
 
 	public:
-		Window(std::string title);
+		~CWindow();
+		CWindow(std::wstring title);
 		//WIP
 };
 
