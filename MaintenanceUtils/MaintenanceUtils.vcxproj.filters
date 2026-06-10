@@ -27,7 +27,7 @@
     <ClInclude Include="MaintenanceUtils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Window.h">
+    <ClInclude Include="CWindow.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GlobalSettings.h">

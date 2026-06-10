@@ -1,19 +1,20 @@
-#include "window.h"
+#include "CWindow.h"
 #include <Windows.h>
 #include <stdexcept>
 #include <string>
 
-CWindow::CWindow(std::wstring* WstrWindowTitle, int SizeX, int SizeY, )
+CWindow::CWindow(std::wstring* WstrWindowTitle, int SizeX, int SizeY)
 {
-	if (WstrWindowTitle->empty() || SizeX <= 0 || SizeY <= 0, )
+	if (WstrWindowTitle->empty() || SizeX <= 0 || SizeY <= 0)
 	{
 		throw std::invalid_argument("Invalid arguments passed for creating a new window");
 	}
 
-	this->WindowHandle = CreateWindowEx(3, WstrWindowTitle->c_str(), );
+	this->WindowHandle = CreateWindowEx(3, WstrWindowTitle->c_str(), WstrWindowTitle->c_str(), 0, SizeX, SizeY, 0, 0, nullptr, nullptr, nullptr, nullptr);
 	
 	if (this->WindowHandle == nullptr || this->WindowHandle == INVALID_HANDLE_VALUE)
 	{
+		std::wstring wstrErrCode = std::to_wstring(GetLastError());
 		MessageBox(nullptr, L"Window handle creation failed (Returned HWND is invalid", L"MaintenanceUtils", MB_ICONSTOP);
 		return;
 	}

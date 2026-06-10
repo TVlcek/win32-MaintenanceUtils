@@ -6,11 +6,12 @@ class CWindow
 {
 	private:
 		HWND WindowHandle;
+
 		MSG msg;
 
 	public:
 		~CWindow();
-		CWindow(std::wstring title);
+		CWindow(std::wstring* WstrWindowTitle, int SizeX, int SizeY);
 		//WIP
 };
 
