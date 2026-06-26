@@ -1,5 +1,5 @@
 #include <windows.h>
-#include <string.h>
+#include <string>
 
 #pragma once
 class CWindow
@@ -11,8 +11,14 @@ class CWindow
 
 	public:
 		~CWindow();
-		CWindow(std::wstring* WstrWindowTitle, int SizeX, int SizeY);
+		CWindow(std::wstring* WstrWindowTitle, WNDCLASS wnd, int SizeX, int SizeY);
 		bool Show();
-		//WIP
+
+		enum class WNDStatus
+		{
+			Shown = 1, // window was shown
+			Hidden = 2, // window is hidden
+			ToBeDisposed = 3, //CWindow object is marked as no longer usable and waiting to be destroyed
+		};
 };
 

@@ -6,16 +6,15 @@
 #include <stdexcept>
 #include <string>
 #include <iostream>
-using namespace std;
 
-CWindow::CWindow(std::wstring* WstrWindowTitle, int SizeX, int SizeY)
+CWindow::CWindow(std::wstring* WstrWindowTitle, WNDCLASS wnd, int SizeX, int SizeY)
 {
 	if (WstrWindowTitle->empty() || SizeX <= 0 || SizeY <= 0)
 	{
 		throw std::invalid_argument("Invalid arguments passed for creating a new window");
 	}
 
-	this->WindowHandle = CreateWindowEx(3, WstrWindowTitle->c_str(), WstrWindowTitle->c_str(), 0, SizeX, SizeY, 0, 0, nullptr, nullptr, nullptr, nullptr);
+	this->WindowHandle = CreateWindowExW(3, wnd.lpszClassName, WstrWindowTitle->c_str(), 0, 0, 0, SizeX, SizeY, nullptr, nullptr, nullptr, nullptr);
 	
 	if (this->WindowHandle == nullptr || this->WindowHandle == INVALID_HANDLE_VALUE)
 	{

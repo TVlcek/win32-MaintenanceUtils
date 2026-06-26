@@ -1,7 +1,29 @@
 #include "framework.h"
 #include "MaintenanceUtils.h"
+#include "CWindow.h"
+#include <windows.h>
 
 //public MaintenanceUtils
+LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lparam)
+{
+    switch (message)
+    {
+        case WM_CREATE:
+        {
+            return 0;
+        }
+        case WM_PAINT:
+        {
+            return 0;
+        }
+        case WM_DESTROY:
+        {
+            DestroyWindow(hwnd);
+        }
+    }
+    return DefWindowProc(hwnd, message, wparam, lparam);
+}
+
 int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrev, LPSTR args, int nshow) 
 {
     static WNDCLASS wndclass;
@@ -20,34 +42,18 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrev, LPSTR args, int nshow)
 
     if (!RegisterClass(&wndclass))
     {
-        return;
+        return 1;
     }
+    
+    std::wstring wTitle = L"wTitle";
+    CWindow wnd(&wTitle, wndclass, 800, 600);
+    wnd.Show();
 
-    while (GetMessage(&msg, NULL, 0, 0) > 0)
+    while (GetMessage(&msg, NULL, 0, 0))
     {
         TranslateMessage(&msg);
         DispatchMessage(&msg);
     }
 
     return 0;
-}
-LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lparam)
-{
-    switch (message)
-    {
-        case WM_CREATE:
-        {
-            return 0;
-        }
-        case WM_PAINT:
-        {
-            return 0;
-        }
-        case WM_DESTROY:
-        {
-            DestroyWindow(hwnd);
-        }
-            
-    }
-    return DefWindowProc(hwnd, message, wparam, lparam);
 }
